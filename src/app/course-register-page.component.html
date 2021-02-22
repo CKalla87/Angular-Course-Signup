@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Educational registration form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="course-register-page.component.scss" rel="stylesheet/scss" type="text/css">
+  </head>
+  <body>
+    <!--Course form template-->
+    <div class="main-block" *ngIf=!addClass>
+      <div class="left-part">
+        <i class="fas fa-graduation-cap"></i>
+        <h1>Register for courses</h1>
+        <p>We can help you get registered for the classes you want at the times you want to take them!</p>
+      </div>
+      <form action="/">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>Register here</h2>
+        </div>
+        <div class="info">
+          <input required class="name" type="text" name="userName" (change)="NameChange($event)" (keypress)="InputValidator($event)" placeholder="Username">
+          <input required type="text" name="email" (change)="EmailChange($event)" placeholder="Email">
+          <input required type="text" name="studentId" (change)="IdChange($event)" (keypress)="InputValidator($event)" placeholder="Student Id">
+          <select (change)="ClassSelection($event)">
+            <option value="SubjectType" selected>Class Subject*</option>
+            <option value="Math">Math</option>
+            <option value="Science">Science</option>
+            <option value="Art">Art</option>
+            <option value="Language Arts">Language Arts</option>
+          </select>
+          <select (change)="TopicSelection($event)">
+            <option value="TopicType" selected>Class Topic*</option>
+            <option *ngFor='let v of values'>{{ v }}</option>
+          </select>
+          <select (change)="TimeSelection($event)">
+            <option value="TimeslotType" selected>Class Timeslot*</option>
+            <option *ngFor="let v of values2">{{ v }}</option>
+          </select>
+        </div>
+        <button type="submit" (click)="ButtonClicked($event)" [disabled]="!isValid" [style.background-color]="!isValid ? 'gray' : '#26a9e0'" href="/">Add Class</button>
+      </form>
+    </div>
+    
+    <!--Submission results-->
+    <div class="main-block" *ngIf=addClass>
+      <form action="/">
+        <div class="title">
+          <h1>Registered Courses</h1>
+        </div>
+        <div class="output">
+          <div>User Name: {{ userName }}</div>
+          <div>Email: {{ userEmail }}</div>
+          <div>Student Id: {{ userId }}</div>
+          <div>Class Subject: {{ classSubject }}</div>
+          <div>Class Topic: {{ classTopic }}</div>
+          <div>Class Timeslot: {{ timeSelection }}</div>
+        </div>
+        <button type="submit" (click)="MainPageClick($event)">Add Another Class</button>
+      </form>
+    </div>
+  </body>
+</html>
