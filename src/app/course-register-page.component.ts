@@ -113,7 +113,7 @@ export class CourseRegisterComponent implements OnInit{
   public InputValidator($event: any): any {
     let inputValue = $event.key;
 
-    if (!inputValue.match(/^[a-z\d\-_\s]+$/)) {
+    if (!inputValue.match(/^[a-zA-Z\d\-_\s]+$/)) {
       return false;
     };
   }
