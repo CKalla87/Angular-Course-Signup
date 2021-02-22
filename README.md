@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
+This project is hosted with AWS at: (https://master.d2y4soy73cum8p.amplifyapp.com/).
+
 ## Setting up local
 Clone the project to your local machine. run command `npm install`.
 
